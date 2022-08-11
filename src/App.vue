@@ -1,9 +1,6 @@
 <template>
   <div>
-    <button @click="onButtonClick">Click Here</button>
-    <div>{{messageFromMain}}</div>
-
-    <div v-for="vita in vitaData" :key="vita.address">
+    <div v-for="vita in vitaData" :key="vita.address" style="display: inline-block;">
         <VitaContainer :state="vita" @update="onUpdate(vita.address, $event)" />
     </div>
   </div>
@@ -47,7 +44,6 @@ const vitaData = reactive({});
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: blue;
-  margin-top: 60px;
+  margin-top: 0px;
 }
 </style>
