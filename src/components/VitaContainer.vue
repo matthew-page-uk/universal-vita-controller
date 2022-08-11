@@ -1,22 +1,33 @@
 <template>
 
-    <div style="border: 1px solid; margin: 20px; padding: 10px">
-        <b>{{ props.state.name }} ({{ props.state.address }})</b>
+    <div style="border: 1px solid; margin: 5px; padding: 10px; width: 12em; display: inline-block; background: linear-gradient(90deg, rgba(250,250,250,1) 0%, rgba(220,220,220,1) 100%);">
+        <div class="unitName">{{ props.state.name }}</div>
+        <div class="unitName">{{ props.state.address }})</div>
 
+        <div class="sectionHeading">Input</div>
+
+        <InputType v-model="inputType" style="float: left;" />
         <InputGain v-model="headAmp" />
-        <InputType v-model="inputType" />
-        <VitaCheckbox v-model="manualEnabled">Manual control enabled: </VitaCheckbox>
         <PeakLevel :level="props.state.dbPeakLevel" />
-        <ActionType v-model="programmeButtonAction">Programme Button: </ActionType>
-        <VitaCheckbox v-model="mutesTB">Mutes TB: </VitaCheckbox>
-        <ActionType v-model="talkbackButtonAction">Talkback Button: </ActionType>
-        <VitaCheckbox v-model="mutesProgramme">Mutes PGM: </VitaCheckbox>
+        <VitaCheckbox v-model="manualEnabled" style="float: left;">Manual Enabled: </VitaCheckbox>
+
+        <br />
+        <div class="sectionHeading">Programme Button</div>
+        <ActionType v-model="programmeButtonAction" style="float: left;"></ActionType>
+        <br />
+        <VitaCheckbox v-model="mutesTB" style="float: left;">Mutes TB</VitaCheckbox>
+
+        <br />
+        <div class="sectionHeading">Talkback Button</div>
+        <ActionType v-model="talkbackButtonAction" style="float: left;"></ActionType>
+        <br />
+        <VitaCheckbox v-model="mutesProgramme" style="float: left;">Mutes PGM: </VitaCheckbox>
     </div>
 
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 
 import InputGain from './InputGain.vue';
 import InputType from './InputType.vue';
@@ -55,7 +66,7 @@ const manualEnabled = computed({
     set(newValue) {
         update({ isManualEnabled: !!newValue });
 
-    }  
+    }
 });
 
 const programmeButtonAction = computed({
@@ -71,7 +82,7 @@ const mutesTB = computed({
     set(newValue) {
         update({ isProgrammeMutesTB: !!newValue });
 
-    }  
+    }
 });
 
 const talkbackButtonAction = computed({
@@ -87,7 +98,7 @@ const mutesProgramme = computed({
     set(newValue) {
         update({ isTalkbackMutesProgramme: !!newValue });
 
-    }  
+    }
 });
 
 
@@ -98,4 +109,20 @@ function update(updateObject) {
 </script>
 
 <style>
+
+.unitName {
+    color: maroon;
+    font-size: small;
+    font-weight: bold;
+    text-align: left;
+}
+
+.sectionHeading {
+    font-size: medium;
+    font-weight: bold;
+    text-align: left;
+    padding-top: .5em;
+    padding-bottom: .25em;
+}
+
 </style>
