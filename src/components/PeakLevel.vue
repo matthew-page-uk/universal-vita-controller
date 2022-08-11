@@ -1,19 +1,19 @@
 <template>
     <div>
         <span style="display: flex">
-            <div style="margin: 2px; border: solid 1px green; width: 20px; height: 20px;"
+            <div class="led" style="border-color: green;"
                 :style="(level > -13) ? { background: 'green' } : { background: 'transparent' }">
             </div>
-            <div style="margin: 2px; border: solid 1px green; width: 20px; height: 20px;"
+            <div class="led" style="border-color: green;"
                 :style="(level > -7) ? { background: 'green' } : { background: 'transparent' }">
             </div>
-            <div style="margin: 2px; border: solid 1px yellow; width: 20px; height: 20px;"
+            <div class="led" style="border-color: yellow;"
                 :style="(level > 0) ? { background: 'yellow' } : { background: 'transparent' }">
             </div>
-            <div style="margin: 2px; border: solid 1px red; width: 20px; height: 20px;"
+            <div class="led" style="border-color: red;"
                 :style="(level > 6) ? { background: 'red' } : { background: 'transparent' }">
             </div>
-            <div>{{ level }}</div>
+            <!-- <div>{{ level }}</div> -->
         </span>
     </div>
 
@@ -29,4 +29,11 @@ defineProps({
 </script>
 
 <style>
+.led {
+    margin: 5px;
+    width: 15px;
+    height: 15px;
+    border: solid 1px;
+    border-radius: 50%;
+}
 </style>
