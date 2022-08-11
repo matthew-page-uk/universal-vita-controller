@@ -19,10 +19,6 @@ async function createWindow() {
     });
 
     win.webContents.on('dom-ready', () => {
-        // setInterval(() => {
-        //     win.webContents.send('fromMain', Date.now().toString())
-        // }, 1000);
-
         const vitaService = require('./VitaService');
 
         vitaService.on('update', (data) => {
@@ -31,14 +27,7 @@ async function createWindow() {
 
         ipcMain.on('changeDevice', (event, message) => {
             let {address, data} = message;
-            console.log('change', message);
             vitaService.update(address, data);
-        });
-
-        ipcMain.on('toMain', (event, message) => {
-            console.log('here: ' + message);
-
-            win.webContents.send('fromMain', 'message from the background');
         });
     });
 

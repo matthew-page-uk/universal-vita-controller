@@ -14,25 +14,12 @@ const messageFromMain = ref('some text');
 const vitaData = reactive({});
 
     onMounted(() => {
-      window.ipcRenderer.receive('fromMain', (message) => {
-        console.log(message);
-        messageFromMain.value = message;
-      });
-
       window.ipcRenderer.receive('deviceState', (state) => {
-        //console.log('device state', state);
-
         vitaData[state.address] = state;
       });
     })
 
-    function onButtonClick() {
-      console.log('button clicked');
-      window.ipcRenderer.send('toMain', 'button has been clicked');
-    }
-
     function onUpdate(address, data) {
-        console.log(address, data);
         window.ipcRenderer.send('changeDevice', {address, data});
     }
 
