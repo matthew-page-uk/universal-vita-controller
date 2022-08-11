@@ -1,4 +1,4 @@
-# electronipctest
+# universal-vita-controller
 
 ## Project setup
 ```
