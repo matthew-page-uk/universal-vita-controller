@@ -4,6 +4,7 @@ import { createProtocol } from 'vue-cli-plugin-electron-builder/lib';
 import * as path from 'path';
 
 async function createWindow() {
+    const vitaService = require('./VitaService');
     // Create the browser window.
     const win = new BrowserWindow({
         width: 800,
@@ -19,8 +20,6 @@ async function createWindow() {
     });
 
     win.webContents.on('dom-ready', () => {
-        const vitaService = require('./VitaService');
-
         vitaService.on('update', (data) => {
             win.webContents.send('deviceState', data);
         });

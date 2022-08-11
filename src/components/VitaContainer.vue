@@ -4,6 +4,8 @@
         <div class="unitName">{{ props.state.name }}</div>
         <div class="unitName">{{ props.state.address }})</div>
 
+        <hr />
+
         <div class="sectionHeading">Input</div>
 
         <InputType v-model="inputType" style="float: left;" />

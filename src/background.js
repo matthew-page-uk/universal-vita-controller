@@ -40,6 +40,11 @@ app.on('ready', async () => {
     }
 
     let win = await createWindow();
+    
+    win.on('closed', () => {
+        win = null;
+        app.quit();
+    });
 })
 
 // Exit cleanly on request from parent process in development mode.
