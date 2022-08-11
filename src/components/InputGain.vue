@@ -1,7 +1,6 @@
 <template>
     <div style="display: flex; width: 100%">
-        Gain
-
+        <slot></slot>
         <div style="width: 100%">
             <input id="headAmp" class="gainInput" type="range" min="0" max="255" list="dBs" :value="modelValue"
                 @input="$emit('update:modelValue', $event.target.value)" />
@@ -32,7 +31,7 @@ defineEmits(['update:modelValue']);
 
 .gainValues {
     display: flex;
-    color: white;
+    color: darkgrey;
     width: 100%;
     justify-content: space-between;
 }
