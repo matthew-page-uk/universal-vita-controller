@@ -1,17 +1,44 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <button @click="onButtonClick">Click Here</button>
+    <div>{{messageFromMain}}</div>
+
+    <div v-for="vita in vitaData" :key="vita.address">
+        <VitaContainer :state="vita" @update="onUpdate(vita.address, $event)" />
+    </div>
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import { ref, reactive, onMounted } from 'vue';
+import VitaContainer from './components/VitaContainer.vue';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+const messageFromMain = ref('some text');
+const vitaData = reactive({});
+
+    onMounted(() => {
+      window.ipcRenderer.receive('fromMain', (message) => {
+        console.log(message);
+        messageFromMain.value = message;
+      });
+
+      window.ipcRenderer.receive('deviceState', (state) => {
+        //console.log('device state', state);
+
+        vitaData[state.address] = state;
+      });
+    })
+
+    function onButtonClick() {
+      console.log('button clicked');
+      window.ipcRenderer.send('toMain', 'button has been clicked');
+    }
+
+    function onUpdate(address, data) {
+        console.log(address, data);
+        window.ipcRenderer.send('changeDevice', {address, data});
+    }
+
 </script>
 
 <style>
@@ -20,7 +47,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: blue;
   margin-top: 60px;
 }
 </style>
