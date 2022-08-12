@@ -19,7 +19,6 @@ const vitaData = reactive({});
       });
 
       window.ipcRenderer.receive('removeDevice', (device) => {
-        console.log(device);
         delete vitaData[device.address];
       })
     })
