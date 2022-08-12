@@ -11,7 +11,7 @@ contextBridge.exposeInMainWorld('ipcRenderer', {
     }
   },
   receive: (channel, func) => {
-    let validChannels = ['fromMain', 'deviceState']
+    let validChannels = ['fromMain', 'deviceState', 'removeDevice']
     if (validChannels.includes(channel)) {
       // Deliberately strip event as it includes `sender`
       ipcRenderer.on(channel, (event, ...args) => func(...args))

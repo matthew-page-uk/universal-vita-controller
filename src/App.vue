@@ -17,6 +17,11 @@ const vitaData = reactive({});
       window.ipcRenderer.receive('deviceState', (state) => {
         vitaData[state.address] = state;
       });
+
+      window.ipcRenderer.receive('removeDevice', (device) => {
+        console.log(device);
+        delete vitaData[device.address];
+      })
     })
 
     function onUpdate(address, data) {

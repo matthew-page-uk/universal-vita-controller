@@ -24,6 +24,10 @@ async function createWindow() {
             win.webContents.send('deviceState', data);
         });
 
+        vitaService.on('remove', (data) => {
+            win.webContents.send('removeDevice', data);
+        })
+
         ipcMain.on('changeDevice', (event, message) => {
             let {address, data} = message;
             vitaService.update(address, data);
