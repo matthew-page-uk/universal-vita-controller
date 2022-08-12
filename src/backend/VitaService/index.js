@@ -1,4 +1,5 @@
 
+const debug = require('debug')('VitaService');
 const { EventEmitter } = require('events');
 const socket = require('./UDPSocketService');
 const { Vita, INPUT_TYPES, ACTION_TYPES } = require('./Vita');
@@ -15,6 +16,7 @@ class VitaService extends EventEmitter {
     }
 
     update(address, data) {
+        debug('update', address, data);
         if (!address) return;
         let device = this.deviceMap.get(address);
         if (!device) return;
@@ -38,18 +40,19 @@ class VitaService extends EventEmitter {
           }
         
           this.deviceMap.set(device.address, deviceObj);
-          console.log('add ', deviceObj);
+          debug('add', deviceObj);
         });
         
         this.discovery.on('change', (device) => {
           let currentDevice = this.deviceMap.get(device.address);
           this.deviceMap.set(device.address, { ...currentDevice, ...device });
-          console.log('change ', device);
+          debug('change', device);
         });
         
         this.discovery.on('remove', (device) => {
           this.deviceMap.delete(device.address);
-          console.log('remove ', device);
+          this.emit('remove', device);
+          debug('remove', device);
         });
     }
 }

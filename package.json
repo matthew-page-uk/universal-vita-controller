@@ -15,6 +15,7 @@
   "main": "background.js",
   "dependencies": {
     "core-js": "^3.8.3",
+    "debug": "^4.3.4",
     "dgram": "^1.0.1",
     "multicast-dns": "^7.2.5",
     "vue": "^3.2.13"
