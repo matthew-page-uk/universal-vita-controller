@@ -2,7 +2,7 @@
 
     <div style="border: 1px solid; margin: 5px; padding: 10px; width: 12em; display: inline-block; background: linear-gradient(90deg, rgba(250,250,250,1) 0%, rgba(220,220,220,1) 100%);">
         <div class="unitName">{{ props.state.name }}</div>
-        <div class="unitName">{{ props.state.address }})</div>
+        <div class="unitName">{{ props.state.address }}</div>
 
         <hr />
 
