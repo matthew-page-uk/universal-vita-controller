@@ -30,8 +30,6 @@ class VitaDiscovery extends EventEmitter {
         });
     
         if (device) {
-            //console.log(device);
-    
             let aRecord = additionals.find((record) => {
                 let { type } = record;
                 return type == 'A';
@@ -47,7 +45,6 @@ class VitaDiscovery extends EventEmitter {
                     lastSeen: Date.now()
                 }
 
-                //console.log(aRecord);
                 if (!this.devices.has(aRecord.name)) {
                     this.emit('add', deviceDetails)
                 }
