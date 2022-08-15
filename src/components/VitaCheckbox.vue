@@ -1,9 +1,12 @@
 <template>
-    <div>
-        <slot></slot>
-        <input type="checkbox" :checked="(modelValue === true)" @change="$emit('update:modelValue', $event.target.checked)" />
-    </div>
-
+  <div>
+    <slot />
+    <input
+      type="checkbox"
+      :checked="(modelValue === true)"
+      @change="$emit('update:modelValue', $event.target.checked)"
+    >
+  </div>
 </template>
 
 <script setup>

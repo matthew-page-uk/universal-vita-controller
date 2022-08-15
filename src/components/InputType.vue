@@ -1,13 +1,22 @@
 <template>
-    <div>
-        <slot></slot>
-        <select id="inputType" :value="modelValue" @change="$emit('update:modelValue', $event.target.value)">
-            <option value="0">Line</option>
-            <option value="1">Dynamic</option>
-            <option value="2">Phantom</option>
-        </select>
-    </div>
-
+  <div>
+    <slot />
+    <select
+      id="inputType"
+      :value="modelValue"
+      @change="$emit('update:modelValue', $event.target.value)"
+    >
+      <option value="0">
+        Line
+      </option>
+      <option value="1">
+        Dynamic
+      </option>
+      <option value="2">
+        Phantom
+      </option>
+    </select>
+  </div>
 </template>
 
 <script setup>

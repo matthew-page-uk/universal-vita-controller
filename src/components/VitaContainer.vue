@@ -1,31 +1,63 @@
 <template>
-
-    <div style="border: 1px solid; margin: 5px; padding: 10px; width: 12em; display: inline-block; background: linear-gradient(90deg, rgba(250,250,250,1) 0%, rgba(220,220,220,1) 100%);">
-        <div class="unitName">{{ props.state.name }}</div>
-        <div class="unitName">{{ props.state.address }}</div>
-
-        <hr />
-
-        <div class="sectionHeading">Input</div>
-
-        <InputType v-model="inputType" style="float: left;" />
-        <InputGain v-model="headAmp" />
-        <PeakLevel :level="props.state.dbPeakLevel" />
-        <VitaCheckbox v-model="manualEnabled" style="float: left;">Manual Enabled: </VitaCheckbox>
-
-        <br />
-        <div class="sectionHeading">Programme Button</div>
-        <ActionType v-model="programmeButtonAction" style="float: left;"></ActionType>
-        <br />
-        <VitaCheckbox v-model="mutesTB" style="float: left;">Mutes TB</VitaCheckbox>
-
-        <br />
-        <div class="sectionHeading">Talkback Button</div>
-        <ActionType v-model="talkbackButtonAction" style="float: left;"></ActionType>
-        <br />
-        <VitaCheckbox v-model="mutesProgramme" style="float: left;">Mutes PGM: </VitaCheckbox>
+  <div style="border: 1px solid; margin: 5px; padding: 10px; width: 12em; display: inline-block; background: linear-gradient(90deg, rgba(250,250,250,1) 0%, rgba(220,220,220,1) 100%);">
+    <div class="unitName">
+      {{ props.state.name }}
+    </div>
+    <div class="unitName">
+      {{ props.state.address }}
     </div>
 
+    <hr>
+
+    <div class="sectionHeading">
+      Input
+    </div>
+
+    <InputType
+      v-model="inputType"
+      style="float: left;"
+    />
+    <InputGain v-model="headAmp" />
+    <PeakLevel :level="props.state.dbPeakLevel" />
+    <VitaCheckbox
+      v-model="manualEnabled"
+      style="float: left;"
+    >
+      Manual Enabled:
+    </VitaCheckbox>
+
+    <br>
+    <div class="sectionHeading">
+      Programme Button
+    </div>
+    <ActionType
+      v-model="programmeButtonAction"
+      style="float: left;"
+    />
+    <br>
+    <VitaCheckbox
+      v-model="mutesTB"
+      style="float: left;"
+    >
+      Mutes TB
+    </VitaCheckbox>
+
+    <br>
+    <div class="sectionHeading">
+      Talkback Button
+    </div>
+    <ActionType
+      v-model="talkbackButtonAction"
+      style="float: left;"
+    />
+    <br>
+    <VitaCheckbox
+      v-model="mutesProgramme"
+      style="float: left;"
+    >
+      Mutes PGM:
+    </VitaCheckbox>
+  </div>
 </template>
 
 <script setup>

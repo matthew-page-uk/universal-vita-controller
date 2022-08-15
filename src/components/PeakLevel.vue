@@ -1,22 +1,29 @@
 <template>
-    <div>
-        <span style="display: flex">
-            <div class="led" style="border-color: green;"
-                :style="(level > -13) ? { background: 'green' } : { background: 'transparent' }">
-            </div>
-            <div class="led" style="border-color: green;"
-                :style="(level > -7) ? { background: 'green' } : { background: 'transparent' }">
-            </div>
-            <div class="led" style="border-color: yellow;"
-                :style="(level > 0) ? { background: 'yellow' } : { background: 'transparent' }">
-            </div>
-            <div class="led" style="border-color: red;"
-                :style="(level > 6) ? { background: 'red' } : { background: 'transparent' }">
-            </div>
-            <!-- <div>{{ level }}</div> -->
-        </span>
-    </div>
-
+  <div>
+    <span style="display: flex">
+      <div
+        class="led"
+        style="border-color: green;"
+        :style="(level > -13) ? { background: 'green' } : { background: 'transparent' }"
+      />
+      <div
+        class="led"
+        style="border-color: green;"
+        :style="(level > -7) ? { background: 'green' } : { background: 'transparent' }"
+      />
+      <div
+        class="led"
+        style="border-color: yellow;"
+        :style="(level > 0) ? { background: 'yellow' } : { background: 'transparent' }"
+      />
+      <div
+        class="led"
+        style="border-color: red;"
+        :style="(level > 6) ? { background: 'red' } : { background: 'transparent' }"
+      />
+      <!-- <div>{{ level }}</div> -->
+    </span>
+  </div>
 </template>
 
 <script setup>

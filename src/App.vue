@@ -1,7 +1,14 @@
 <template>
   <div>
-    <div v-for="vita in vitaData" :key="vita.address" style="display: inline-block;">
-        <VitaContainer :state="vita" @update="onUpdate(vita.address, $event)" />
+    <div
+      v-for="vita in vitaData"
+      :key="vita.address"
+      style="display: inline-block;"
+    >
+      <VitaContainer
+        :state="vita"
+        @update="onUpdate(vita.address, $event)"
+      />
     </div>
   </div>
 </template>
